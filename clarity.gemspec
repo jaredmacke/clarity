@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
   
 Gem::Specification.new do |s|  
   s.name        = "clarity"  
-  s.version     = "0.1.3" 
+  s.version     = "0.1.4" 
   s.platform    = Gem::Platform::RUBY  
   s.authors     = ["Jared Macke"]  
   s.email       = ["jmacke@gmail.com"]  
@@ -15,8 +15,6 @@ Gem::Specification.new do |s|
   s.add_dependency('eventmachine_httpserver')
   s.add_dependency('json')
   
-  s.files         = `git ls-files`.split("\n")  
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")  
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }  
+  s.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
   s.require_paths = ["lib"]  
 end  
